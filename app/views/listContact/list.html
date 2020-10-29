@@ -1,0 +1,52 @@
+<!-- Loader -->
+<div class="d-flex justify-content-center loader" ng-show="loading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- Contenido -->
+<div class="row px-5">
+  <div class="col-sm-12">
+    <button class="btn btn-secondary btn-lg" ng-click="newContact()">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-lines-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm2 9a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+      </svg> Crear contacto
+    </button>
+  </div>
+</div>
+<br>
+<!-- Filtros -->
+<div class="row px-5">
+  <div class="col-sm-12">
+    <input type="text" placeholder="Filtrar por nombre" ng-model="search.nombre">
+    <input type="text" placeholder="Filtrar por teléfono" ng-model="search.telefono">
+    <input type="text" placeholder="Filtrar por correo" ng-model="search.correo_electronico">
+  </div>
+</div>
+<br>
+<!-- Listado -->
+<div class="row px-5">
+  <div class="col-sm-4" ng-repeat="contact in contacts  | filter:search:strict">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{contact.nombre}}</h5>
+        <p class="card-text">{{contact.correo_electronico}}
+          <br>{{contact.direccion}}
+          <br>{{contact.telefono}}
+          <br>{{contact.fecha_de_nacimiento | date}}
+          <br>{{contact.edad}}</p>
+          <button type="button" class="btn btn-outline-primary" ng-click="editContact(contact)">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+            </svg>
+          </button>
+          <button type="button" class="btn btn-outline-primary" ng-click="deleteContact(contact.objectId)">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash2-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.037 3.225l1.684 10.104A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671l1.684-10.104C13.627 4.224 11.085 5 8 5c-3.086 0-5.627-.776-5.963-1.775z"/>
+              <path fill-rule="evenodd" d="M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"/>
+            </svg>
+          </button>
+      </div>
+    </div>
+  </div>
+</div>

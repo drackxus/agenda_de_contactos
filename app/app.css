@@ -1,0 +1,15 @@
+/* app css stylesheet */
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  background: #0000004f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
